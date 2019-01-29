@@ -1,0 +1,67 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		jcenter()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+def artifact_name = 'ProjectManagerServiceBoot'
+
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'war'
+
+group = 'com.prjMgmt.service'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	providedRuntime
+	all*.exclude module : 'spring-boot-starter-logging'
+	all*.exclude module : 'logback-classic'
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-cloud-connectors')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.cloud:spring-cloud-config-client')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile ('org.springframework.boot:spring-boot-starter-freemarker')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile ('org.springframework.boot:spring-boot-starter-log4j2')
+	compile ("io.springfox:springfox-swagger2:2.4.0")
+	compile ("org.springframework.boot:spring-boot-devtools")
+	compile("org.aspectj:aspectjweaver:1.8.8")
+    compile ("javax.ws.rs:javax.ws.rs-api:2.0")
+    compile ("io.springfox:springfox-swagger-ui:2.4.0") 
+    compile ("io.swagger:swagger-codegen:2.2.1")
+    providedCompile ("io.swagger:swagger-codegen:2.2.1")
+    runtime('mysql:mysql-connector-java')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    compile("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2")
+    testCompile ("junit:junit:${junit_version}")
+	testCompile ("org.mockito:mockito-core:${mockito_core_version}")
+    testCompile ("javax:javaee-api:7.0")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+/*
+* build appropriate artifact
+*/
+war {
+	archiveName = "$artifact_name.$extension"
+}

@@ -1,0 +1,6 @@
+**/.copyarea.db
+**/.gradle/**
+/.project
+**/build/**
+/.gradle/
+/bin/
