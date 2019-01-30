@@ -16,6 +16,8 @@ public class TaskView extends BaseView {
 	private String parentTask=null;
 	@JsonProperty("Project_ID")
 	private Integer projectId = 0;
+	@JsonProperty("Project")
+	private String project = null;
 	@JsonProperty("Task")
 	private String task = null;
 	@JsonProperty("status")
@@ -104,6 +106,14 @@ public class TaskView extends BaseView {
 
 	public void setParentTask(String inParentTask) {
 		parentTask = inParentTask;
+	}
+
+	public String getProject() {
+		return project;
+	}
+
+	public void setProject(String project) {
+		this.project = project;
 	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.projectManager.service.constant.ServiceConstant;
+import com.projectManager.service.entity.ParentTask;
 import com.projectManager.service.entity.Project;
 import com.projectManager.service.entity.Task;
 import com.projectManager.service.repository.TaskRepository;
@@ -39,6 +40,13 @@ public class TaskManager {
 		}else {
 			taskView.setParentId(0);
 			taskView.setParentTask("N/A");
+		}
+		if(taskModel.getProject()!=null) {
+			taskView.setProjectId(taskModel.getProject().getProjectId());
+			taskView.setProject(taskModel.getProject().getProject());
+		}else {
+			taskView.setProjectId(0);
+			taskView.setProject("N/A");
 		}
 		return taskView;
 	}
@@ -90,6 +98,14 @@ public class TaskManager {
 	public void addTask(TaskView inTaskView) throws Exception {
 		Task task = new Task();
 		BeanUtils.copyProperties(inTaskView, task);
+		//setting parent task
+		ParentTask parentTask=new ParentTask();
+		parentTask.setParentId(inTaskView.getParentId());
+		task.setParentTask(parentTask);
+		//setting project
+		Project project=new Project();
+		project.setProjectId(inTaskView.getProjectId());
+		task.setProject(project);
 		try {
 			task.setStartDate(
 					new SimpleDateFormat(ServiceConstant.DISPLAY_DATE_FORMAT).parse(inTaskView.getStartDateDisplay()));
@@ -98,14 +114,19 @@ public class TaskManager {
 		} catch (ParseException e) {
 			// Consume exception
 		}
-		taskRepository.save(task);
+		taskRepository.save(task); 
 	}
 
 	public void editTask(TaskView inTaskView) throws Exception {
 		Task task = taskRepository.findOne(inTaskView.getTaskId());
 		if (null != task) {
 			BeanUtils.copyProperties(inTaskView, task);
-			Project project = new Project();
+			//setting parent task
+			ParentTask parentTask=new ParentTask();
+			parentTask.setParentId(inTaskView.getParentId());
+			task.setParentTask(parentTask);
+			//setting project
+			Project project=new Project();
 			project.setProjectId(inTaskView.getProjectId());
 			task.setProject(project);
 			try {

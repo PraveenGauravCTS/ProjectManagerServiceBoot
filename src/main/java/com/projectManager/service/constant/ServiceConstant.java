@@ -19,7 +19,7 @@ public final class ServiceConstant {
 	public static final String STATUS_OPEN = "0";
 	public static final String STATUS_COMPLETED = "1";
 
-	public static final String DISPLAY_DATE_FORMAT = "ddMMMyy";
+	public static final String DISPLAY_DATE_FORMAT = "yyyy-MM-dd";
 
 	private ServiceConstant() {
 		// Avoid instantiation
