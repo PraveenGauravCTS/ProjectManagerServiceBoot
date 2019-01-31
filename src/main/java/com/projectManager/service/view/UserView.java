@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class UserView extends BaseView{
 
 	@JsonProperty("User_ID")
+	private Integer userId = null;
+	@JsonProperty("EmployeeId")
 	private Integer employeeId = null;
 	@JsonProperty("FirstName")
 	private String firstName = null;
@@ -65,6 +67,14 @@ public class UserView extends BaseView{
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }

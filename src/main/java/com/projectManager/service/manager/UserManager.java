@@ -56,7 +56,7 @@ public class UserManager {
 	}
 
 	public void editUser(UserView inUserView) throws Exception{
-		User user = userRepository.findOne(inUserView.getEmployeeId());
+		User user = userRepository.findOne(inUserView.getUserId());
 		if (null != user) {
 			BeanUtils.copyProperties(inUserView, user);
 			userRepository.save(user);

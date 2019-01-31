@@ -12,6 +12,9 @@ public class User {
 
 	@Id
 	@GeneratedValue
+	@Column(name = "USER_ID")
+	private Integer userId;
+	
 	@Column(name = "EMPLOYEE_ID")
 	private Integer employeeId;
 
@@ -65,6 +68,14 @@ public class User {
 
 	public void setTaskId(Integer taskId) {
 		this.taskId = taskId;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
 }
