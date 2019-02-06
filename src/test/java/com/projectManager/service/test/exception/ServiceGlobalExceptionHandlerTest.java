@@ -1,4 +1,4 @@
-package com.cognizant.internal.prjmgmt.service.test.exception;
+package com.projectManager.service.test.exception;
 
 import java.util.Arrays;
 

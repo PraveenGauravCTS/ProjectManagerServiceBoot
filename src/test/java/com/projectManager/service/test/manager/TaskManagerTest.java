@@ -1,4 +1,4 @@
-package com.cognizant.internal.prjmgmt.service.test.manager;
+package com.projectManager.service.test.manager;
 
 import static org.junit.Assert.assertNotNull;
 

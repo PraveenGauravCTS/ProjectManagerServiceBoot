@@ -1,4 +1,4 @@
-package com.cognizant.internal.prjmgmt.service.test.util;
+package com.projectManager.service.test.util;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

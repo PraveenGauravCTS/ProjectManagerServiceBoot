@@ -1,4 +1,4 @@
-package com.cognizant.internal.prjmgmt.service.test.exception;
+package com.projectManager.service.test.exception;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertNotNull;
