@@ -73,16 +73,16 @@ public class TaskManagerTest {
 	@Test
 	public final void testaddTask() throws Exception {
 		TaskView task = new TaskView();
-		task.setStartDateDisplay("26Dec18");
-		task.setEndDateDisplay("26Dec18");
+		task.setStartDateDisplay("2018-02-02");
+		task.setEndDateDisplay("2018-02-02");
 		taskManager.addTask(task);
 	}
 
 	@Test
 	public final void testeditTask() throws Exception {
 		TaskView taskView = new TaskView();
-		taskView.setEndDateDisplay("26Dec18");
-		taskView.setStartDateDisplay("26Dec18");
+		taskView.setEndDateDisplay("2018-02-02");
+		taskView.setStartDateDisplay("2018-02-02");
 		Task task = new Task();
 		Mockito.when(taskRepository.findOne(taskView.getTaskId())).thenReturn(task);
 		taskManager.editTask(taskView);

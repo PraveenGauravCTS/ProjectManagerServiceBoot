@@ -105,8 +105,8 @@ public class ProjectManagerTest {
 	@Test
 	public final void testaddProject() throws Exception {
 		ProjectView project = new ProjectView();
-		project.setStartDateDisplay("26Dec18");
-		project.setEndDateDisplay("26Dec18");
+		project.setStartDateDisplay("2018-02-02");
+		project.setEndDateDisplay("2018-02-02");
 		projectManager.addProject(project);
 	}
 
